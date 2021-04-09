@@ -1,0 +1,10 @@
+1. logo go to home or / depends on @auth
+2. numbers to words
+3. payment status (shows how many days left until overdue)
+4. when getting back errors in invoice create, getting old data filled in fields
+5. pagination
+6. buttons to create new invoice straight from clients list
+7. delete confirm action
+8. confirm payment action
+9. small filtering added to invoices by list info
+10. client search bar by name (need to upgrade with ajax)
