@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 
 Vue.component('invoice-buyer', require('./components/invoice/InvoiceBuyer.vue').default);
 Vue.component('invoice-item', require('./components/invoice/InvoiceItem.vue').default);
+Vue.component('total-amount', require('./components/charts/TotalAmount').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

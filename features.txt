@@ -8,3 +8,6 @@
 8. confirm payment action
 9. small filtering added to invoices by list info
 10. client search bar by name (need to upgrade with ajax)
+11. flash messages
+12. custom VAT
+

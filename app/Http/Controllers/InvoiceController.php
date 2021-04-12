@@ -77,7 +77,8 @@ class InvoiceController extends Controller
         $validation = Validator::make($request->all(), [
             'payment_term' => 'required|integer|min:1|max:360',
             'client' => 'required|integer|min:1',
-            'items' => 'required|json|min:3'
+            'items' => 'required|json|min:3',
+            'vat_percent' => 'required|integer|min:0|max:100'
 
         ], [
             'items.min' => 'Please add at least 1 item to the invoice',
@@ -129,7 +130,7 @@ class InvoiceController extends Controller
             $invoiceItem->invoice_id = $invoiceId;
             $invoiceItem->qty = $item['qty'];
             $invoiceItem->price_excl_tax = $item['price'];
-            $invoiceItem->price_incl_tax = $invoiceService->getPriceWithTax($item['price']);
+            $invoiceItem->price_incl_tax = $invoiceService->getPriceWithTax($item['price'], $request->input('vat_percent'));
             $invoiceItem->save();
 
             $invoice->sum_excl_tax += $invoiceItem->price_excl_tax * $invoiceItem->qty;

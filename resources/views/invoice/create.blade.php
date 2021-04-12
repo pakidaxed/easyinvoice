@@ -54,6 +54,10 @@
                                     <input type="number" id="payment_term" name="payment_term"
                                            step="1" min="1"
                                            value="{{ old('payment_term', 30) }}" size="4">
+                                    <label for="vat_percent">VAT %:</label>
+                                    <input type="number" id="vat_percent" name="vat_percent"
+                                           step="1" min="1"
+                                           value="{{ old('vat_percent', 21) }}" size="4">
                                     <input type="hidden" name="client" value="" v-model="clientId">
                                     <input type="hidden" name="items" value="" v-model="invoiceItems">
                                 </div>

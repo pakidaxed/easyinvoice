@@ -32,10 +32,11 @@ class InvoiceService
         return strtoupper($prefix) . str_pad($this->invoiceCount, 6, "0", STR_PAD_LEFT);
     }
 
-    public function getPriceWithTax($price)
+    public function getPriceWithTax($price, $vat)
     {
+        $vatFormat = 1 + $vat / 100;
         if ($this->user->info->vat_code) {
-            return $price * 1.21;
+            return $price * $vatFormat;
         }
 
         return $price;

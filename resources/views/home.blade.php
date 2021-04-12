@@ -17,6 +17,9 @@
                         {{ __('BUSI PAKEISTAS :)!') }}
 
                         <p>{{ $joke ?? 'ner' }}</p>
+                        <div class="div">
+                            <total-amount></total-amount>
+                        </div>
 
                     </div>
                 </div>
