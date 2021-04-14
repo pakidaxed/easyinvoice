@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\AccountInfo;
 use App\Models\City;
 use App\Models\Client;
+use App\Models\Notification;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -52,7 +54,7 @@ class ClientController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Application|RedirectResponse|Response|Redirector
+     * @return Application|Redirector|RedirectResponse
      */
     public function store(Request $request)
     {
@@ -80,6 +82,11 @@ class ClientController extends Controller
         $client->phone = $request->input('phone');
         $client->comment = $request->input('comment');
         $client->save();
+
+        $notification = new Notification();
+        $notification->message = 'Client ' . $client->name . ' added to database';
+        $notification->user_id = Auth::id();
+        $notification->save();
 
         return redirect(route('client.index', $client->id))->with('success', 'New client created successfully');
     }
@@ -160,6 +167,11 @@ class ClientController extends Controller
         $client = Client::where('user_id', Auth::id())->where('id', $id)->where('active', true)->firstOrFail();
         $client->active = false;
         $client->save();
+
+        $notification = new Notification();
+        $notification->message = 'Client ' . $client->name . ' deleted from database';
+        $notification->user_id = Auth::id();
+        $notification->save();
 
         return redirect(route('client.index'))->with('success', 'Client deleted successfully');
     }

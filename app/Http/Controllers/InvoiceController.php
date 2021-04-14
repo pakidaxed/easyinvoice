@@ -6,8 +6,10 @@ use App\Models\City;
 use App\Models\Client;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
+use App\Models\Notification;
 use App\Models\Unit;
 use App\Services\InvoiceService;
+use Illuminate\Database\Eloquent\Model;
 use PDF;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -140,6 +142,7 @@ class InvoiceController extends Controller
 
         $invoice->save();
 
+
         return redirect(route('invoice.index'));
 
     }
@@ -205,6 +208,11 @@ class InvoiceController extends Controller
         $invoice = Invoice::where('user_id', Auth::id())->where('id', $id)->where('active', true)->firstOrFail();
         $invoice->paid = true;
         $invoice->save();
+
+        $notification = new Notification();
+        $notification->message = 'Payment approved for invoice ' . $invoice->invoice_number;
+        $notification->user_id = Auth::id();
+        $notification->save();
 
         return redirect(route('invoice.index'))->with('success', 'Payment approved');
 

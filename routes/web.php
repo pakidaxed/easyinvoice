@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountInfoController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::resource('client', ClientController::class);
 
 Route::get('account/edit', [AccountInfoController::class, 'edit'])->name('account.edit');
 Route::post('account/edit', [AccountInfoController::class, 'update'])->name('account.update');
+Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 Route::resource('invoice', InvoiceController::class);
 Route::post('invoice/approve/{id}', [InvoiceController::class, 'isPaid'])->name('invoice.isPaid');
