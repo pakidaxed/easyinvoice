@@ -9,7 +9,6 @@ use App\Models\InvoiceItem;
 use App\Models\Notification;
 use App\Models\Unit;
 use App\Services\InvoiceService;
-use Illuminate\Database\Eloquent\Model;
 use PDF;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -33,7 +32,7 @@ class InvoiceController extends Controller
      *
      * @param InvoiceService $invoiceService
      * @param Request $request
-     * @return Application|Factory|View|Response
+     * @return Application|Factory|View
      */
     public function index(InvoiceService $invoiceService, Request $request)
     {
@@ -49,7 +48,7 @@ class InvoiceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Application|Factory|View|Response
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -152,7 +151,7 @@ class InvoiceController extends Controller
      *
      * @param InvoiceService $invoiceService
      * @param int $id
-     * @return Application|Factory|View|Response
+     * @return Application|Factory|View
      */
     public function show(InvoiceService $invoiceService, $id)
     {
@@ -192,7 +191,7 @@ class InvoiceController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Application|RedirectResponse|Response|Redirector
+     * @return Application|Redirector|RedirectResponse
      */
     public function destroy($id)
     {

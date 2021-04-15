@@ -29,13 +29,13 @@
 
                         <div class="row">
                             <div class="col-6 alert alert-success" role="alert">
-                                <h4>Total sum this year</h4>
-                                <h1>Total: {{ $totalSumThisYear }} EUR</h1>
+                                <h4>Total sum this year ({{ today()->year }})</h4>
+                                <h1>Issued: {{ $totalSumThisYear }} EUR</h1>
                                 <h3>Paid: {{ $totalSumThisYearPaid }} EUR</h3>
                             </div>
                             <div class="col-6 alert alert-success" role="alert">
-                                <h4>Total sum this month</h4>
-                                <h1>Total: {{ $totalSumThisMonth }} EUR</h1>
+                                <h4>Total sum this month ({{ today()->monthName }})</h4>
+                                <h1>Issued: {{ $totalSumThisMonth }} EUR</h1>
                                 <h3>Paid: {{ $totalSumThisMonthPaid }} EUR</h3>
                             </div>
                         </div>

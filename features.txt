@@ -11,3 +11,4 @@
 11. flash messages
 12. custom VAT
 13. Notification system added (need to upgrade as a separate service for easier calls in controllers)
+14. Dashboard calculations
