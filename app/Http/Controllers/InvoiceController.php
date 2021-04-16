@@ -155,7 +155,7 @@ class InvoiceController extends Controller
      */
     public function show(InvoiceService $invoiceService, $id)
     {
-        $invoice = Invoice::find($id);
+        $invoice = Invoice::where('user_id' , Auth::id())->where('id', $id)->firstOrFail();
         $sumInWords = $invoiceService->spellout($invoice->sum_excl_tax);
 
         return view('invoice.show', [
